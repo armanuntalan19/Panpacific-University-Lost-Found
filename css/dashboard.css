@@ -980,6 +980,10 @@ a.card:hover,
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .stat-row.stat-row-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .list-row {
     flex-direction: column;
     align-items: flex-start;

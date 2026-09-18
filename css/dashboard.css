@@ -977,7 +977,7 @@ a.card:hover,
 
 @media (max-width: 600px) {
   .stat-row {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .list-row {

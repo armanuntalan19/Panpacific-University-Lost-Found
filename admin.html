@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Panel - FindBack: Panpacific University Lost &amp; Found</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" />
+<link rel="icon" type="image/png" href="images/logo.png" />
+<link rel="stylesheet" href="css/navbar.css" />
+<link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<section class="page-hero page-hero-compact">
+  <div class="container">
+    <h1 class="page-hero-title"><i class="ti ti-shield-lock"></i> Admin Panel</h1>
+    <p>Manage reports, claims, and users for FindBack: Panpacific University Lost &amp; Found.</p>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container">
+
+    <div class="stat-row">
+      <div class="card stat-card stat-card-clickable" data-goto-tab="pending" role="button" tabindex="0">
+        <div class="stat-label"><i class="ti ti-clock-hour-4"></i> Pending Reports</div>
+        <div class="stat-num" id="statPendingReports">–</div>
+      </div>
+      <div class="card stat-card accent stat-card-clickable" data-goto-tab="matches" role="button" tabindex="0">
+        <div class="stat-label"><i class="ti ti-git-compare"></i> Possible Matches</div>
+        <div class="stat-num" id="statMatches">–</div>
+      </div>
+      <div class="card stat-card stat-card-clickable" data-goto-tab="allitems" role="button" tabindex="0">
+        <div class="stat-label"><i class="ti ti-package"></i> All Items</div>
+        <div class="stat-num" id="statAllItems">–</div>
+      </div>
+      <div class="card stat-card heading stat-card-clickable" data-goto-tab="claims" role="button" tabindex="0">
+        <div class="stat-label"><i class="ti ti-file-alert"></i> Pending Claims</div>
+        <div class="stat-num" id="statPendingClaims">–</div>
+      </div>
+      <div class="card stat-card danger stat-card-clickable" data-goto-tab="users" role="button" tabindex="0">
+        <div class="stat-label"><i class="ti ti-users"></i> Total Users</div>
+        <div class="stat-num" id="statTotalUsers">–</div>
+      </div>
+    </div>
+
+    <div class="card card-flush">
+      <div class="tab-bar-wrap">
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="pending"><i class="ti ti-clock-hour-4"></i> Pending Reports <span class="tab-count" id="tabCountPending" hidden>0</span></button>
+          <button class="tab-btn" data-tab="matches"><i class="ti ti-git-compare"></i> Possible Matches <span class="tab-count" id="tabCountMatches" hidden>0</span></button>
+          <button class="tab-btn" data-tab="manual"><i class="ti ti-adjustments"></i> Manual Matching</button>
+          <button class="tab-btn" data-tab="allitems"><i class="ti ti-package"></i> All Items</button>
+          <button class="tab-btn" data-tab="claims"><i class="ti ti-file-check"></i> Claims <span class="tab-count" id="tabCountClaims" hidden>0</span></button>
+          <button class="tab-btn" data-tab="users"><i class="ti ti-users"></i> Users</button>
+          <button class="tab-btn" data-tab="activity"><i class="ti ti-history"></i> Activity History</button>
+        </div>
+      </div>
+
+      <div class="tab-panel active" id="tab-pending">
+        <div id="pendingList"><p class="loading-text">Loading…</p></div>
+      </div>
+
+      <div class="tab-panel" id="tab-matches">
+        <p class="form-hint tab-panel-hint">Auto-pairs reports with the same category, similar report dates (within a week), and matching location when both are on file. Click a pair to compare full reports and notify the owner to review and submit a claim.</p>
+        <div id="matchesList"><p class="loading-text">Loading…</p></div>
+      </div>
+
+      <div class="tab-panel" id="tab-manual">
+        <p class="form-hint tab-panel-hint">Backup for pairs the automatic matcher can't confidently make, especially when a Lost Report has no location. Search for a report, then compare it against likely candidates by hand.</p>
+
+        <div class="manual-filters">
+          <div class="input-wrap manual-filter-search">
+            <i class="ti ti-search"></i>
+            <input type="text" id="manualSearchInput" placeholder="Search by Report ID, category, or description" />
+          </div>
+          <select class="role-select" id="manualTypeFilter">
+            <option value="lost">Lost Reports</option>
+            <option value="found">Found Reports</option>
+          </select>
+          <select class="role-select" id="manualCategoryFilter">
+            <option value="">All Categories</option>
+          </select>
+          <select class="role-select" id="manualStatusFilter">
+            <option value="">All Statuses</option>
+            <option value="active">Active</option>
+            <option value="returned">Returned</option>
+          </select>
+          <input type="date" class="role-select" id="manualDateFilter" />
+          <button type="button" class="btn btn-outline btn-sm" id="manualClearFiltersBtn"><i class="ti ti-x"></i> Clear Filters</button>
+        </div>
+
+        <div id="manualMatchingList"><p class="loading-text">Loading…</p></div>
+        <div class="manual-pagination" id="manualPagination"></div>
+      </div>
+
+      <div class="tab-panel" id="tab-allitems">
+        <div class="tab-panel-toolbar">
+          <p class="form-hint form-hint-flush" id="allItemsCount">Loading item count…</p>
+          <div class="tab-bar tab-bar-nested">
+            <button class="tab-btn active" data-item-filter="all">All</button>
+            <button class="tab-btn" data-item-filter="lost">Lost</button>
+            <button class="tab-btn" data-item-filter="found">Found</button>
+          </div>
+        </div>
+        <div id="allItemsList"><p class="loading-text">Loading…</p></div>
+      </div>
+
+      <div class="tab-panel" id="tab-claims">
+        <div id="claimsAdminList"><p class="loading-text">Loading…</p></div>
+      </div>
+
+      <div class="tab-panel" id="tab-users">
+        <div class="tab-panel-toolbar">
+          <div>
+            <p class="form-hint form-hint-flush">Manage roles for existing accounts, or add a new staff/admin account.</p>
+            <p class="form-hint form-hint-flush form-hint-stacked">Flag accounts for admin review when suspicious activity is detected (someone submitting an unusual number of claims). Flagging is only a visual marker and does not restrict access.</p>
+          </div>
+          <button class="btn btn-primary btn-sm" id="openAddAccountBtn"><i class="ti ti-user-plus"></i> Add Staff / Admin</button>
+        </div>
+        <div id="usersList"><p class="loading-text">Loading…</p></div>
+      </div>
+
+      <div class="tab-panel" id="tab-activity">
+        <p class="form-hint tab-panel-hint">A record of who did what, and when, use this to spot unusual activity, like one account submitting many claims.</p>
+        <div id="activityList"><p class="loading-text">Loading…</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <strong>FindBack: Panpacific University</strong> - Campus Lost &amp; Found &middot; Built for students, by students
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/items.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

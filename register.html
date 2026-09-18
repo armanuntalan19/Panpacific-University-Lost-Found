@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Register - FindBack: Panpacific University Lost &amp; Found</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" />
+<link rel="icon" type="image/png" href="images/logo.png" />
+<link rel="stylesheet" href="css/register.css" />
+</head>
+<body class="auth-body">
+
+<div class="auth-wrapper auth-wrapper-form-only">
+
+  <main class="auth-form-side">
+    <div class="auth-brand">
+      <img src="images/logo.png" alt="Panpacific University" />
+      <div>
+        <strong>Panpacific University</strong>
+        <span>FindBack: Lost &amp; Found</span>
+      </div>
+    </div>
+
+    <h1>Create an Account</h1>
+    <p class="sub">Only @panpacificu.edu.ph emails can register.</p>
+
+    <form id="registerForm">
+      <div class="alert alert-error" id="registerAlert"></div>
+
+      <div class="role-toggle">
+        <label><input type="radio" name="role" value="student" checked /><i class="ti ti-school"></i> Student</label>
+        <label><input type="radio" name="role" value="staff" /><i class="ti ti-briefcase"></i> Staff</label>
+      </div>
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <div class="input-wrap">
+          <i class="ti ti-user"></i>
+          <input type="text" id="fullName" placeholder="Juan Dela Cruz" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <div class="input-wrap">
+          <i class="ti ti-mail"></i>
+          <input type="email" id="email" placeholder="you@panpacificu.edu.ph" required />
+        </div>
+        <p class="form-hint">Must end in @panpacificu.edu.ph</p>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-wrap">
+          <i class="ti ti-lock"></i>
+          <input type="password" id="password" minlength="8" required />
+        </div>
+        <p class="form-hint">At least 8 characters, with 1 uppercase letter, 1 number, and 1 special character.</p>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" id="registerBtn"><i class="ti ti-user-plus"></i> Create Account</button>
+    </form>
+
+    <p class="auth-switch">Already have an account? <a href="index.html">Log in here</a></p>
+  </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>

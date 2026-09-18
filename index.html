@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Log In - FindBack: Panpacific University Lost &amp; Found</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" />
+<link rel="icon" type="image/png" href="images/logo.png" />
+<link rel="stylesheet" href="css/index.css" />
+</head>
+<body class="auth-body">
+
+<div class="auth-wrapper">
+
+  <div class="auth-photo-side">
+    <img src="images/login-illustration.png" alt="Lost & Found - Match it back" />
+  </div>
+
+  <main class="auth-form-side">
+    <div class="auth-brand">
+      <img src="images/logo.png" alt="Panpacific University" />
+      <div>
+        <strong>Panpacific University</strong>
+        <span>FindBack: Lost &amp; Found</span>
+      </div>
+    </div>
+
+    <h1>Welcome Back</h1>
+    <p class="sub">Log in with your Panpacific University email.</p>
+
+    <form id="loginForm">
+      <div class="alert alert-error" id="loginAlert"></div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <div class="input-wrap">
+          <i class="ti ti-mail"></i>
+          <input type="email" id="email" placeholder="you@panpacificu.edu.ph" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-wrap">
+          <i class="ti ti-lock"></i>
+          <input type="password" id="password" required />
+        </div>
+        <p class="form-hint form-hint-right"><a href="#" id="forgotPasswordLink" class="link-accent">Forgot password?</a></p>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" id="loginBtn"><i class="ti ti-login-2"></i> Log In</button>
+    </form>
+
+    <p class="auth-switch">Don't have an account? <a href="register.html">Register here</a></p>
+  </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

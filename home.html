@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FindBack: Panpacific University Lost &amp; Found</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" />
+<link rel="icon" type="image/png" href="images/logo.png" />
+<link rel="stylesheet" href="css/navbar.css" />
+<link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<section class="page-hero page-hero-compact" id="homeHero">
+  <div class="container hero-row">
+    <div>
+      <h1>Lost something on campus?</h1>
+      <p>FindBack: Panpacific University's Lost &amp; Found makes it easy to report, search, and reunite students and staff with their belongings.</p>
+    </div>
+    <div class="hero-actions">
+      <a href="javascript:void(0)" class="btn btn-accent" onclick="openReportModal('lost')"><i class="ti ti-alert-circle"></i> Report a Lost Item</a>
+      <a href="javascript:void(0)" class="btn btn-outline" onclick="openReportModal('found')"><i class="ti ti-package"></i> Report a Found Item</a>
+    </div>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container">
+
+    <h2 class="section-title-center">How It Works</h2>
+    <div class="grid-3 how-it-works-grid">
+      <div class="card hover-lift step-card">
+        <i class="ti ti-clipboard-list step-icon"></i>
+        <h3 class="step-title">1. Report</h3>
+        <p class="step-desc">Submit a lost or found item report with a photo and details.</p>
+      </div>
+      <div class="card hover-lift step-card">
+        <i class="ti ti-search step-icon"></i>
+        <h3 class="step-title">2. Search</h3>
+        <p class="step-desc">Browse by category and status, photos, location, and other details stay private until Authorized Staff verify a claim.</p>
+      </div>
+      <div class="card hover-lift step-card">
+        <i class="ti ti-confetti step-icon"></i>
+        <h3 class="step-title">3. Reunite</h3>
+        <p class="step-desc">Submit a claim, and if approved, go to the CSS office to claim your lost item.</p>
+      </div>
+    </div>
+
+    <div class="quick-links">
+      <a href="lost-items.html" class="card hover-lift quick-link">
+        <i class="ti ti-map-search icon icon-danger"></i>
+        <div>
+          <h3 class="quick-link-title">Browse Lost Items</h3>
+          <p class="quick-link-desc">See what's been reported missing</p>
+        </div>
+      </a>
+      <a href="found-items.html" class="card hover-lift quick-link">
+        <i class="ti ti-package icon icon-success"></i>
+        <div>
+          <h3 class="quick-link-title">Browse Found Items</h3>
+          <p class="quick-link-desc">See what's been turned in</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="recent-section">
+      <h2>Recently Reported</h2>
+      <div id="recentItems" class="grid-cards recent-items-grid">
+        <p class="loading-text">Loading recent items…</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <strong>FindBack: Panpacific University</strong> - Campus Lost &amp; Found &middot; Built for students, by students
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/items.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

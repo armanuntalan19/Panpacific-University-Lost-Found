@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Dashboard - FindBack: Panpacific University Lost &amp; Found</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" />
+<link rel="icon" type="image/png" href="images/logo.png" />
+<link rel="stylesheet" href="css/navbar.css" />
+<link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<section class="page-hero page-hero-compact">
+  <div class="container hero-row">
+    <div>
+      <h1 class="page-hero-title"><i class="ti ti-layout-dashboard"></i> <span id="welcomeText">Welcome!</span></h1>
+      <p class="hero-subtitle">Here's a summary of your activity on Lost &amp; Found.</p>
+    </div>
+    <div class="hero-actions">
+      <a href="javascript:void(0)" class="btn btn-accent" onclick="openReportModal('lost')"><i class="ti ti-alert-circle"></i> Report a Lost Item</a>
+      <a href="javascript:void(0)" class="btn btn-outline" onclick="openReportModal('found')"><i class="ti ti-package"></i> Report a Found Item</a>
+    </div>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container">
+
+    <div class="stat-row stat-row-3">
+      <div class="card stat-card stat-card-clickable" data-goto-tab="reports" role="button" tabindex="0">
+        <div class="stat-label"><i class="ti ti-clipboard-list"></i> My Reports</div>
+        <div class="stat-num" id="statReports">–</div>
+      </div>
+      <div class="card stat-card accent stat-card-clickable" data-goto-tab="claims" role="button" tabindex="0">
+        <div class="stat-label"><i class="ti ti-file-check"></i> My Claims</div>
+        <div class="stat-num" id="statClaims">–</div>
+      </div>
+      <div class="card stat-card heading stat-card-clickable" data-goto-tab="notifications" role="button" tabindex="0">
+        <div class="stat-label"><i class="ti ti-bell"></i> Unread Notifications</div>
+        <div class="stat-num" id="statNotifs">–</div>
+      </div>
+    </div>
+
+    <div class="card card-flush">
+      <div class="tab-bar-wrap">
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="reports"><i class="ti ti-clipboard-list"></i> My Reports</button>
+          <button class="tab-btn" data-tab="claims"><i class="ti ti-file-check"></i> My Claims</button>
+          <button class="tab-btn" data-tab="notifications"><i class="ti ti-bell"></i> Notifications</button>
+        </div>
+      </div>
+
+      <div class="tab-panel active" id="tab-reports">
+        <div id="reportsList"><p class="loading-text">Loading your reports…</p></div>
+      </div>
+
+      <div class="tab-panel" id="tab-claims">
+        <div id="claimsList"><p class="loading-text">Loading your claims…</p></div>
+      </div>
+
+      <div class="tab-panel" id="tab-notifications">
+        <div id="notifsList"><p class="loading-text">Loading notifications…</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <strong>FindBack: Panpacific University</strong> - Campus Lost &amp; Found &middot; Built for students, by students
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/items.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
